@@ -2,8 +2,8 @@ const express = require('express');
 const morgan = require("morgan");
 const fs = require('fs');
 const app = express();
-const csvLog = "./server/log.csv"
-const csvToJson = require("csvtojson")
+const csvLog = "./server/log.csv";
+const csvToJson = require("csvtojson");
 
 app.use(morgan("tiny"));
 
@@ -16,7 +16,7 @@ app.use((req, res, next) => {
     let status = res.statusCode;
     let logData = `\n${agent}, ${time}, ${method}, ${resource}, ${version}, ${status}`;
     fs.appendFile(csvLog, logData, (err) => {
-        if (err) {
+        if (err){
             console.log(err);
         } 
     });
